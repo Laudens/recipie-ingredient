@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+{% form_theme formIngredient 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+	{% if editMode %}
+		<h1>
+			Modification d'un ingredient
+		</h1>
+	{% else %}
+		<h1>
+			creation d'un ingredient
+		</h1>
+	{% endif %}
+	{{ form_start(formIngredient) }}
+
+	<div class="my-custom-class-for-errors">
+		{{ form_errors(formIngredient) }}
+	</div>
+
+	{{ form_row(formIngredient.name, {'label':'Nom','attr': {'placeholder':"Nom de l'Ingredient"}}) }}
+	{{ form_row(formIngredient.price, {'label':'Prix','attr': {'placeholder':"prix de l'Ingredient"}}) }}
+
+	<button type="submit" class="btn btn-success">
+		{% if editMode %}
+			Enregistrer les modifications
+		{% else %}
+			Ajouter un Ingredient
+		{% endif %}
+	</button>
+	{{ form_end(formIngredient) }}
+
+{% endblock %}
